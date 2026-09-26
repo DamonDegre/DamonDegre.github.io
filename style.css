@@ -18,7 +18,7 @@
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     line-height: 1.25;
     font-family: lucida console;
-    border: 3px solid black;
+    border: 5px solid teal;
     font-weight: bold;
 }
 
@@ -42,20 +42,19 @@
     padding: clamp(0.3rem, 2vw, 0.7rem) clamp(0.5rem, 4vw, 1.5rem);
     font-size: inherit;
     border-radius: 2px;
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
 .button1 {
     background-color: teal;
     color: white;
-    padding: clamp(0.3rem, 4vw, 1.4rem) clamp(0.5rem, 8vw, 3rem);
+    padding: clamp(0.3rem, 2vw, 0.7rem) clamp(0.5rem, 4vw, 1.5rem);
     font-size: inherit;
-    border-radius: 2px;
-    border: 1px solid black;
+    border-radius: 3px;
+    border: 2px solid black;
     display: block;
     width: fit-content;
     margin: 2rem auto;
-    padding-top: 7rem;
 }
 
 body {
