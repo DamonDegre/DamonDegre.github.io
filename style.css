@@ -22,6 +22,29 @@
     font-weight: bold;
 }
 
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    min-height: clamp(2.5rem, 10vw, 4.25rem);
+    padding: 0.65rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    color: black;
+    z-index: 1000;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    font-size: clamp(0.5rem, 2.5vw, 1rem);
+    line-height: 1.25;
+    font-family: lucida console;
+    border-top: 5px solid teal;
+}
+
 .header-title {
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     font-weight: bold;
@@ -49,12 +72,17 @@
     background-color: teal;
     color: white;
     padding: clamp(0.3rem, 2vw, 0.7rem) clamp(0.5rem, 4vw, 1.5rem);
+    min-width: clamp(10rem, 16vw, 14rem);
+    min-height: clamp(3.5rem, 5vw, 4.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: inherit;
     border-radius: 3px;
     border: 2px solid black;
-    display: block;
     width: fit-content;
     margin: 2rem auto;
+    padding-bottom: 7rem;
 }
 
 body {
