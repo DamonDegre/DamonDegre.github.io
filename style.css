@@ -22,6 +22,12 @@
     font-weight: bold;
 }
 
+.header-title {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: bold;
+    color: black;
+}
+
 .header-links {
     display: flex;
     align-items: center;
@@ -33,7 +39,7 @@
 .button {
     background-color: teal;
     color: white;
-    padding: clamp(0.5rem, 2vw, 0.7rem) clamp(0.8rem, 4vw, 1.5rem);
+    padding: clamp(0.3rem, 2vw, 0.7rem) clamp(0.5rem, 4vw, 1.5rem);
     font-size: inherit;
     border-radius: 2px;
     border: 1px solid darkblue;
@@ -46,14 +52,12 @@ body {
 
 h1 {
     font-size: clamp(1.75rem, 5vw, 2.5rem);
-    display: flex;
-    align-items: center;
+    margin-top: 0;
+    text-align: center;
 }
 
 p {
     font-size: clamp(1rem, 2.5vw, 1.2rem);
-    display: flex;
-    align-items: center;
 }
 
 a {
