@@ -17,7 +17,7 @@
     gap: 0.5rem 1rem;
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     line-height: 1.25;
-    font-family: lucida console;
+    font-family: "Lucida Console", "Courier New", monospace;
     border: 5px solid teal;
     font-weight: bold;
 }
@@ -33,7 +33,7 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background-color: white;
     color: black;
     z-index: 1000;
@@ -41,8 +41,13 @@
     gap: 0.5rem 1rem;
     font-size: clamp(0.5rem, 2.5vw, 1rem);
     line-height: 1.25;
-    font-family: lucida console;
+    font-family: "Lucida Console", "Courier New", monospace;
     border-top: 5px solid teal;
+}
+
+.fixed-footer p {
+    margin: 0;
+    line-height: 1.25;
 }
 
 .header-title {
@@ -82,11 +87,12 @@
     border: 2px solid black;
     width: fit-content;
     margin: 2rem auto;
-    padding-bottom: 7rem;
 }
 
 body {
     background-color: lightblue;
+    font-family: "Lucida Console", "Courier New", monospace;
+    padding-bottom: 6rem;
 }
 
 h1 {
