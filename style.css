@@ -1,17 +1,21 @@
 .fixed-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background-color: white;
-  color: black;
-  z-index: 1000;
-  padding-left: 50px;
-  padding-top: 40px;
-  font-size: 20px;
-  font-family: lucida console;
-  border: 2px solid black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: white;
+    color: black;
+    z-index: 1000;
+    font-size: 24px;
+    font-family: lucida console;
+    border: 3px solid black;
+    font-weight: bold;
 }
 
 .button1 {
