@@ -3,9 +3,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: auto;
-    min-height: clamp(4.5rem, 10vw, 6.25rem);
-    padding: 0.65rem 1.5rem;
+    height: clamp(4.5rem, 10vw, 6.25rem);
+    padding: 0.5rem clamp(0.35rem, 1.5vw, 1.5rem);
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -13,8 +12,8 @@
     background-color: white;
     color: black;
     z-index: 1000;
-    flex-wrap: wrap;
-    gap: 0.5rem 1rem;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     line-height: 1.25;
     font-family: "Courier New", monospace;
@@ -51,24 +50,34 @@
 }
 
 .header-title {
-    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    min-width: 0;
+    flex: 0 1 auto;
+    overflow-wrap: anywhere;
+    font-size: clamp(0.75rem, 2.5vw, 1.75rem);
     font-weight: bold;
     color: black;
 }
 
 .header-links {
     display: flex;
+    flex: 1 1 0;
+    min-width: 0;
     align-items: center;
     justify-content: flex-end;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    flex-wrap: nowrap;
+    gap: clamp(0.15rem, 0.8vw, 0.5rem);
 }
 
 .button {
+    flex: 1 1 0;
+    min-width: 0;
     background-color: teal;
     color: white;
-    padding: clamp(0.3rem, 2vw, 0.7rem) clamp(0.5rem, 4vw, 1.5rem);
-    font-size: inherit;
+    padding: clamp(0.1rem, 0.8vw, 0.4rem) clamp(0.2rem, 1vw, 1rem);
+    font-size: clamp(0.6rem, 2vw, 1rem);
+    line-height: 1.1;
+    text-align: center;
+    overflow-wrap: anywhere;
     border-radius: 2px;
     border: 2px solid black;
 }
