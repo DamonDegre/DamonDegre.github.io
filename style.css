@@ -116,6 +116,13 @@ h1 {
     padding-top: 7rem;
 }
 
+h2 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    margin-top: 0;
+    text-align: center;
+    padding-bottom: 0.5rem;
+}
+
 p {
     font-size: clamp(1rem, 2.5vw, 1.3rem);
     line-height: 2;
@@ -125,12 +132,13 @@ a {
     text-decoration: none;
 }
 
-hr {
+hr,
+#project-page hr {
+    width: 90%;
+    margin: 2.5rem auto;
+    height : 4px;
+    background-color: teal;
     border: none;
-    margin: 2rem 0;
-    width:75%; 
-    height: 3px;
-    background-color: black;
 }
 
 #featured-projects {
@@ -162,10 +170,26 @@ hr {
 #project-image {
     display: block;
     width: min(90%, 48rem);
-    max-height: 65vh;
-    height: auto;
-    object-fit: contain;
+    aspect-ratio: 16 / 12;
+    object-fit: cover;
     margin: 1rem auto;
+    border-radius: 8px;
+    border: 4px solid teal;
+}
+
+.project-detail-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.project-detail-meta p {
+    margin: 0;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    line-height: 1.3;
 }
 
 .project-info {
@@ -192,17 +216,14 @@ hr {
     text-align: center;
     line-height: 1.5;
     overflow-wrap: anywhere;
-}
-
-.project-description {
-    color: #555;
-}
-
-.project-meta {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 0.25rem 0.75rem;
+}
+
+.project-description {
+    color: #555;
 }
 
 .project-link {

@@ -3,6 +3,23 @@ const projectId = params.get("id");
 
 const project = projects.find(project => project.id === projectId);
 
+function setProjectDetail(elementId, label, value) {
+    const element = document.getElementById(elementId);
+
+    if (value === undefined || value === null || value === "" ||
+        (Array.isArray(value) && value.length === 0)) {
+        element.replaceChildren();
+        element.hidden = true;
+        return;
+    }
+
+    const displayValue = Array.isArray(value) ? value.join(", ") : value;
+    const labelElement = document.createElement("strong");
+    labelElement.textContent = `${label}: `;
+    element.replaceChildren(labelElement, document.createTextNode(displayValue));
+    element.hidden = false;
+}
+
 async function loadProjectLog(id) {
     const logElement = document.getElementById("project-log");
 
@@ -49,17 +66,17 @@ if (project) {
     document.getElementById("project-image").src = project.image;
     document.getElementById("project-image").alt = project.title;
 
-    document.getElementById("project-description").textContent =
-        project.description;
-
-    document.getElementById("project-year").textContent =
-        `Year: ${project.year}`;
-
-    document.getElementById("project-status").textContent =
-        `Status: ${project.status}`;
-
     document.getElementById("project-categories").textContent =
-        `Categories: ${project.categories.join(" · ")}`;
+        project.categories.join(" · ");
+        
+    document.getElementById("project-year").textContent = project.year;
+    document.getElementById("project-status").textContent = project.status;
+
+    setProjectDetail("project-description", "Description", project.description);
+    setProjectDetail("project-goal", "Goal", project.goal);
+    setProjectDetail("project-features", "Features", project.features);
+    setProjectDetail("project-materials", "Materials", project.materials);
+    setProjectDetail("project-tools", "Tools", project.tools);
 
     loadProjectLog(project.id);
 
