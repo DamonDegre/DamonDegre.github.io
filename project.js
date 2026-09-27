@@ -1,8 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const projectId = params.get("id");
 
-const project = projects.find(project => project.id === projectId);
-
 function setProjectDetail(elementId, label, value) {
     const element = document.getElementById(elementId);
 
@@ -20,70 +18,70 @@ function setProjectDetail(elementId, label, value) {
     element.hidden = false;
 }
 
-async function loadProjectLog(id) {
+function renderProjectLog(markdown) {
     const logElement = document.getElementById("project-log");
 
+    if (!markdown) {
+        logElement.textContent = "No process log has been added for this project yet.";
+        return;
+    }
+
+    const lines = markdown.split(/\r?\n/);
+    logElement.replaceChildren();
+
+    lines.forEach((line, index) => {
+        const heading = line.match(/^#\s+(.+)$/);
+
+        if (heading) {
+            const boldHeading = document.createElement("strong");
+            boldHeading.textContent = heading[1];
+            logElement.appendChild(boldHeading);
+        } else {
+            logElement.appendChild(document.createTextNode(line));
+        }
+
+        if (index < lines.length - 1) {
+            logElement.appendChild(document.createElement("br"));
+        }
+    });
+}
+
+async function renderProjectPage() {
+    const page = document.getElementById("project-page");
+
     try {
-        const response = await fetch(`project_logs/${encodeURIComponent(id)}.md`);
+        const project = await loadProjectData(projectId);
 
-        if (response.status === 404) {
-            logElement.textContent = "No process log has been added for this project yet.";
-            return;
-        }
+        document.getElementById("project-title").textContent = project.title;
+        document.getElementById("project-image").src = project.image;
+        document.getElementById("project-image").alt = project.title;
 
-        if (!response.ok) {
-            throw new Error(`Failed to load project log: ${response.status}`);
-        }
+        document.getElementById("project-categories").textContent =
+            (project.categories || []).join(" · ");
+        document.getElementById("project-year").textContent = project.year ?? "";
+        document.getElementById("project-status").textContent = project.status || "";
 
-        const lines = (await response.text()).split(/\r?\n/);
-        logElement.replaceChildren();
-
-        lines.forEach((line, index) => {
-            const heading = line.match(/^##\s+(.+)$/);
-
-            if (heading) {
-                const boldHeading = document.createElement("strong");
-                boldHeading.textContent = heading[1];
-                logElement.appendChild(boldHeading);
-            } else {
-                logElement.appendChild(document.createTextNode(line));
-            }
-
-            if (index < lines.length - 1) {
-                logElement.appendChild(document.createElement("br"));
-            }
-        });
+        setProjectDetail("project-description", "Description", project.description);
+        setProjectDetail("project-goal", "Goal", project.goal);
+        setProjectDetail("project-features", "Features", project.features);
+        setProjectDetail("project-materials", "Materials", project.materials);
+        setProjectDetail("project-tools", "Tools", project.tools);
+        renderProjectLog(project.log);
     } catch (error) {
-        logElement.textContent = "The process log could not be loaded.";
-        console.error(error);
+        const heading = document.createElement("h1");
+        const message = document.createElement("p");
+
+        if (error.status === 404) {
+            heading.textContent = "Project not found";
+            message.textContent = "Sorry, we couldn't find that project.";
+        } else {
+            heading.textContent = "Project unavailable";
+            message.textContent = "Project information could not be loaded.";
+            console.error(error);
+        }
+
+        page.replaceChildren(heading, message);
     }
 }
 
-if (project) {
-
-    document.getElementById("project-title").textContent = project.title;
-
-    document.getElementById("project-image").src = project.image;
-    document.getElementById("project-image").alt = project.title;
-
-    document.getElementById("project-categories").textContent =
-        project.categories.join(" · ");
-        
-    document.getElementById("project-year").textContent = project.year;
-    document.getElementById("project-status").textContent = project.status;
-
-    setProjectDetail("project-description", "Description", project.description);
-    setProjectDetail("project-goal", "Goal", project.goal);
-    setProjectDetail("project-features", "Features", project.features);
-    setProjectDetail("project-materials", "Materials", project.materials);
-    setProjectDetail("project-tools", "Tools", project.tools);
-
-    loadProjectLog(project.id);
-
-} else {
-
-    document.getElementById("project-page").innerHTML = `
-        <h1>Project not found</h1>
-        <p>Sorry, we couldn't find that project.</p>
-    `;
-}
+renderProjectPage();

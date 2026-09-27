@@ -141,23 +141,78 @@ hr,
     border: none;
 }
 
-#featured-projects {
+.featured-carousel {
+    --project-card-gap: clamp(1rem, 2vw, 1.5rem);
     width: min(calc(100% - 2rem), 72rem);
     margin-inline: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 22rem));
-    justify-content: center;
-    gap: clamp(1rem, 3vw, 1.5rem);
+    grid-template-columns: 2.75rem minmax(0, 1fr) 2.75rem;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#featured-projects {
+    min-width: 0;
+    display: flex;
+    gap: var(--project-card-gap);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+#featured-projects::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-control {
+    width: 2.75rem;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 2px solid teal;
+    border-radius: 2px;
+    background: white;
+    color: teal;
+    font: inherit;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.carousel-control:hover:not(:disabled) {
+    background: teal;
+    color: white;
+}
+
+.carousel-control:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
 .project-card {
-    width: 100%;
+    flex: 0 0 calc((100% - var(--project-card-gap) - var(--project-card-gap)) / 3);
     min-width: 0;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     border: 1px solid #ccc;
     border-radius: 8px;
     overflow: hidden;
     background: white;
+    scroll-snap-align: start;
+}
+
+@media (max-width: 900px) {
+    .project-card {
+        flex-basis: calc((100% - var(--project-card-gap)) / 2);
+    }
+}
+
+@media (max-width: 600px) {
+    .project-card {
+        flex-basis: 100%;
+    }
 }
 
 .project-image {
@@ -193,14 +248,23 @@ hr,
 }
 
 .project-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
     padding: clamp(0.875rem, 2.5vw, 1.25rem);
 }
 
 .project-info h3 {
     margin: 0 0 0.5rem;
+    min-height: 2.4em;
     font-size: clamp(1.15rem, 2vw, 1.5rem);
     line-height: 1.2;
     overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
 
 .project-categories,
@@ -210,13 +274,35 @@ hr,
     overflow-wrap: anywhere;
 }
 
+.project-categories {
+    display: -webkit-box;
+    min-height: 3em;
+    margin: 0 0 0.5rem;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.project-description {
+    display: -webkit-box;
+    min-height: 4.5em;
+    margin: 0;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
 .project-meta {
     font-size: clamp(0.875rem, 1.5vw, 1rem);
-    margin-top: 0;
+    min-height: 1.5em;
+    margin-top: auto;
     text-align: center;
     line-height: 1.5;
     overflow-wrap: anywhere;
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 0.25rem 0.75rem;
@@ -228,8 +314,10 @@ hr,
 
 .project-link {
     display: inline-block;
+    min-height: 1.5em;
     margin-top: 0.5rem;
     font-size: clamp(0.875rem, 1.5vw, 1rem);
+    line-height: 1.5;
 }
 
 #project-log {
