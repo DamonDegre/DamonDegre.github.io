@@ -18,6 +18,10 @@ featuredProjects.forEach(project => {
 
             <p class="project-description">
                 ${project.description}
+                ${project.goal}
+                ${project.features}
+                ${project.materials}
+                ${project.tools}
             </p>
 
             <div class="project-meta">
