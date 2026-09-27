@@ -7,18 +7,18 @@ const projects = [
         featured: true,
         workshop: true,
         description: "A wearable computer inspired by Fallout: New Vegas.",
-        image: "images/pipboy1.jpeg"
+        image: "images/pipboy1.JPEG"
     },
 
     {
         title: "Telescoping Lightsaber",
-        year: 2026,
+        year: 2024,
         categories: ["Mechanical", "3D Printing"],
         status: "In Progress",
         featured: true,
         workshop: true,
         description: "A mechanically retractable lightsaber.",
-        image: "images/lightsaber.jpg"
+        image: "images/lightsaber.JPEG"
     },
 
     {
@@ -29,6 +29,6 @@ const projects = [
         featured: false,
         workshop: true,
         description: "An Arduino-controlled color-sensing lock.",
-        image: "images/color-lock.jpg"
+        image: "images/color-lock.JPEG"
     }
 ];
