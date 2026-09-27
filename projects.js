@@ -7,7 +7,7 @@ const projects = [
         featured: true,
         workshop: true,
         description: "A wearable computer inspired by Fallout: New Vegas.",
-        image: "images/pip-boy.jpg"
+        image: "images/pipboy1.jpeg"
     },
 
     {
