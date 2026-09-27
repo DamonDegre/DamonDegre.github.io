@@ -14,7 +14,7 @@
     z-index: 1000;
     flex-wrap: nowrap;
     gap: 0.5rem;
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: clamp(0.75rem, 2.5vw, 2rem);
     line-height: 1.25;
     font-family: "Courier New", monospace;
     border-bottom: 5px solid teal;
@@ -122,4 +122,34 @@ p {
 
 a {
     text-decoration: none;
+}
+
+.project-card {
+    width: 350px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+}
+
+.project-image {
+    width: 100%;
+    display: block;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-info h3 {
+    margin-top: 0;
+}
+
+.project-description {
+    color: #555;
+}
+
+.project-year {
+    font-size: 0.9rem;
+    color: #888;
 }
