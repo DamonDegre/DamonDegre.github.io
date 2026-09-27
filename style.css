@@ -47,6 +47,7 @@
 .fixed-footer p {
     margin: 0;
     line-height: 1;
+    font-size: clamp(0.65rem, 1vw, 0.85rem);
 }
 
 .header-title {
