@@ -11,8 +11,23 @@ featuredProjects.forEach(project => {
 
         <div class="project-info">
             <h3>${project.title}</h3>
-            <p class="project-description">${project.description}</p>
-            <p class="project-year">${project.year}</p>
+
+            <p class="project-categories">
+                ${project.categories.join(" · ")}
+            </p>
+
+            <p class="project-description">
+                ${project.description}
+            </p>
+
+            <div class="project-meta">
+                <span>${project.year}</span>
+                <span>${project.status}</span>
+            </div>
+
+            <a href="project.html?id=${project.id}" class="project-link">
+                View Project →
+            </a>
         </div>
     `;
 

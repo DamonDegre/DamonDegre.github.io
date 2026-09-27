@@ -1,5 +1,6 @@
 const projects = [
     {
+        id: "pip-boy",
         title: "Pip-Boy",
         year: 2026,
         categories: ["Electronics", "CAD", "Programming"],
@@ -11,6 +12,7 @@ const projects = [
     },
 
     {
+        id: "telescoping-lightsaber",
         title: "Telescoping Lightsaber",
         year: 2024,
         categories: ["Mechanical", "3D Printing"],
@@ -22,6 +24,7 @@ const projects = [
     },
 
     {
+        id: "color-lock",
         title: "Color Lock",
         year: 2025,
         categories: ["Electronics", "Mechanical"],
