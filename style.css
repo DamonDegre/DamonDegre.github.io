@@ -318,6 +318,11 @@ hr,
     margin-top: 0.5rem;
     font-size: clamp(0.875rem, 1.5vw, 1rem);
     line-height: 1.5;
+    color: teal;
+}
+
+.project-link:visited {
+    color: teal;
 }
 
 #project-log {

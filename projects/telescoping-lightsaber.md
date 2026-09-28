@@ -3,13 +3,16 @@
     "id": "telescoping-lightsaber",
     "title": "Telescoping Lightsaber",
     "year": 2024,
-    "status": "Shelved",
-    "function": "Partial Function",
+    "status": "Partial Function | Shelved",
     "featured": true,
     "workshop": true,
-    "image": "images/lightsaber.JPEG",
+    "image": "images/telescopinglightsaber1.png",
     "categories": ["Mechanical", "3D Printing"],
-    "description": "A mechanically retractable lightsaber."
+    "description": "A mechanically extending and retractable lightsaber.",
+    "goal": "To create a cheap yet durable lightsaber.",
+    "features": ["Rough pulley actuation"],
+    "materials": ["PLA", "String"],
+    "tools": ["TinkerCAD", "3D Printer"]
 }
 ---
 
