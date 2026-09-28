@@ -1,5 +1,7 @@
 async function loadProjectData(id) {
-    const response = await fetch(`projects/${encodeURIComponent(id)}.md`);
+    const response = await fetch(`projects/${encodeURIComponent(id)}.md`, {
+        cache: "no-store"
+    });
 
     if (!response.ok) {
         const error = new Error(`Could not load project ${id}: ${response.status}`);
@@ -27,7 +29,7 @@ async function loadProjectData(id) {
 }
 
 async function loadProjectCatalog() {
-    const response = await fetch("projects/index.json");
+    const response = await fetch("projects/index.json", { cache: "no-store" });
     if (!response.ok) {
         throw new Error(`Could not load project index: ${response.status}`);
     }

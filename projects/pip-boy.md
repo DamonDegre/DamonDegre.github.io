@@ -5,13 +5,12 @@
     "year": 2025,
     "status": "Partial Function | Shelved",
     "featured": true,
-    "recent": true,
     "image": "images/pipboy1.JPEG",
     "categories": ["Electronics", "CAD", "Programming"],
     "description": "A wearable computer inspired by Fallout: New Vegas.",
     "goal": "To create a fully functional wearable computer with custom features",
-    "features": ["Cassete player", "3 Buttons", "2 Dials", "Thermometer", "4in LCD IPS Display", "GPS"],
-    "materials": ["Raspberry Pi", "Cardboard", "Rotary encoders", "Gutted cassette player"],
+    "features": ["Cassete player", "3 Buttons", "2 Dials", "Thermometer", "Display", "GPS"],
+    "materials": ["Raspberry Pi", "Cardboard", "2 rotary encoders", "Gutted cassette player", "4in LCD IPS Display"],
     "tools": ["Knife"]
 }
 ---

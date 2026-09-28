@@ -151,7 +151,7 @@ hr,
     gap: 0.5rem;
 }
 
-#featured-projects {
+.project-carousel-track {
     min-width: 0;
     display: flex;
     gap: var(--project-card-gap);
@@ -161,8 +161,23 @@ hr,
     scrollbar-width: none;
 }
 
-#featured-projects::-webkit-scrollbar {
+.project-carousel-track::-webkit-scrollbar {
     display: none;
+}
+
+.project-carousel-track[data-card-count="1"] .project-card {
+    flex-basis: 100%;
+}
+
+.project-carousel-track[data-card-count="2"] .project-card {
+    flex-basis: calc((100% - var(--project-card-gap)) / 2);
+}
+
+.carousel-empty {
+    flex: 0 0 100%;
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
 }
 
 .carousel-control {
@@ -210,9 +225,23 @@ hr,
 }
 
 @media (max-width: 600px) {
-    .project-card {
+    .project-card,
+    .project-carousel-track[data-card-count="2"] .project-card {
         flex-basis: 100%;
     }
+}
+
+.all-projects-page {
+    padding-bottom: 2rem;
+}
+
+.all-projects-grid {
+    width: min(calc(100% - 2rem), 72rem);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+    align-items: stretch;
+    gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .project-image {

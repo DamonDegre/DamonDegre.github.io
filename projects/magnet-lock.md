@@ -5,7 +5,6 @@
     "year": 2024,
     "status": "Functional Iteration | Shelved",
     "featured": true,
-    "recent": true,
     "image": "images/magnetlock1.png",
     "categories": ["Mechanical", "3D Printing", "Magnets"],
     "description": "A lock that functions through the use of repelling magnets.",
