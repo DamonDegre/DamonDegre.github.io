@@ -11,10 +11,24 @@ function setProjectDetail(elementId, label, value) {
         return;
     }
 
-    const displayValue = Array.isArray(value) ? value.join(", ") : value;
     const labelElement = document.createElement("strong");
     labelElement.textContent = `${label}: `;
-    element.replaceChildren(labelElement, document.createTextNode(displayValue));
+
+    if (Array.isArray(value)) {
+        const list = document.createElement("ul");
+        list.className = "project-detail-list";
+
+        value.forEach(item => {
+            const listItem = document.createElement("li");
+            listItem.textContent = item;
+            list.appendChild(listItem);
+        });
+
+        element.replaceChildren(labelElement, list);
+    } else {
+        element.replaceChildren(labelElement, document.createTextNode(value));
+    }
+
     element.hidden = false;
 }
 

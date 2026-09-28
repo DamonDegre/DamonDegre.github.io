@@ -6,7 +6,7 @@
     "status": "Partial Function | Shelved",
     "featured": true,
     "image": "images/pipboy1.JPEG",
-    "categories": ["Electronics", "CAD", "Programming"],
+    "categories": ["Electronics", "Programming"],
     "description": "A wearable computer inspired by Fallout: New Vegas.",
     "goal": "To create a fully functional wearable computer with custom features",
     "features": ["Cassete player", "3 Buttons", "2 Dials", "Thermometer", "Display", "GPS"],
