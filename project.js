@@ -32,6 +32,66 @@ function setProjectDetail(elementId, label, value) {
     element.hidden = false;
 }
 
+function createProjectLogMedia(source) {
+    const cleanSource = source.trim().replace(/^<(.+)>$/, "$1");
+    let mediaUrl;
+
+    try {
+        mediaUrl = new URL(cleanSource, window.location.href);
+    } catch {
+        return null;
+    }
+
+    if (mediaUrl.protocol !== "http:" && mediaUrl.protocol !== "https:") {
+        return null;
+    }
+
+    const media = document.createElement("figure");
+    media.className = "project-log-media";
+
+    if (mediaUrl.hostname === "drive.google.com") {
+        const driveFileId = mediaUrl.pathname.match(/\/file\/d\/([^/]+)/)?.[1]
+            || mediaUrl.searchParams.get("id");
+
+        if (!driveFileId) return null;
+
+        const frame = document.createElement("iframe");
+        frame.src = `https://drive.google.com/file/d/${encodeURIComponent(driveFileId)}/preview`;
+        frame.title = "Project log video";
+        frame.allow = "autoplay; encrypted-media";
+        frame.allowFullscreen = true;
+        frame.loading = "lazy";
+        media.appendChild(frame);
+        return media;
+    }
+
+    const path = mediaUrl.pathname.toLowerCase();
+
+    if (/\.(avif|gif|jpe?g|png|svg|webp)$/.test(path)) {
+        const image = document.createElement("img");
+        image.src = mediaUrl.href;
+        image.alt = "Media from the project log";
+        image.loading = "lazy";
+        media.appendChild(image);
+        return media;
+    }
+
+    if (/\.(m4v|mov|mp4|ogv|webm)$/.test(path)) {
+        const video = document.createElement("video");
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = "metadata";
+
+        const sourceElement = document.createElement("source");
+        sourceElement.src = mediaUrl.href;
+        video.appendChild(sourceElement);
+        media.appendChild(video);
+        return media;
+    }
+
+    return null;
+}
+
 function renderProjectLog(markdown) {
     const logElement = document.getElementById("project-log");
 
@@ -44,9 +104,13 @@ function renderProjectLog(markdown) {
     logElement.replaceChildren();
 
     lines.forEach((line, index) => {
-        const heading = line.match(/^#\s+(.+)$/);
+        const mediaMarker = line.match(/^##\s+(.+)$/);
+        const media = mediaMarker && createProjectLogMedia(mediaMarker[1]);
+        const heading = line.match(/^#+\s+(.+)$/);
 
-        if (heading) {
+        if (media) {
+            logElement.appendChild(media);
+        } else if (heading) {
             const boldHeading = document.createElement("strong");
             boldHeading.textContent = heading[1];
             logElement.appendChild(boldHeading);
@@ -54,7 +118,7 @@ function renderProjectLog(markdown) {
             logElement.appendChild(document.createTextNode(line));
         }
 
-        if (index < lines.length - 1) {
+        if (!media && index < lines.length - 1) {
             logElement.appendChild(document.createElement("br"));
         }
     });

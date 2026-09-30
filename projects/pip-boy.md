@@ -14,14 +14,5 @@
     "tools": ["Knife"]
 }
 ---
-# June 12, 2026
-This is all filler
-
-# June 18, 2026
-Please ignore this
-
-# June 23, 2026
-This text is for testing purposes
-
-# July 2, 2026
-Wow its July already
+# 12 June 2026
+This is just filler

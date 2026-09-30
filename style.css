@@ -371,7 +371,32 @@ hr,
 }
 
 #project-log {
+    margin-block: 1em;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    line-height: 2;
     white-space: pre-wrap;
+}
+
+.project-log-media {
+    margin: 1rem 0;
+}
+
+.project-log-media img,
+.project-log-media video {
+    display: block;
+    width: min(100%, 48rem);
+    max-height: 65vh;
+    height: auto;
+    object-fit: contain;
+    margin-inline: auto;
+}
+
+.project-log-media iframe {
+    display: block;
+    width: min(100%, 48rem);
+    aspect-ratio: 16 / 9;
+    border: 0;
+    margin-inline: auto;
 }
 
 .project-year {
